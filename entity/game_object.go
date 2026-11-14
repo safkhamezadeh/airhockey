@@ -19,11 +19,11 @@ func (o GameObject) Draw(screen *ebiten.Image) {
 
 	op := &ebiten.DrawImageOptions{}
 	op.GeoM.Scale(scaleX, scaleY)
-	op.GeoM.Translate(o.middle().X, o.middle().Y)
+	op.GeoM.Translate(o.topLeft().X, o.topLeft().Y)
 	screen.DrawImage(o.Sprite, op)
 }
 
-func (o GameObject) middle() geometry.Vector2 {
+func (o GameObject) topLeft() geometry.Vector2 {
 	return geometry.Vector2{X: o.Position.X - o.Size.Width/2, Y: o.Position.Y - o.Size.Height/2}
 }
 

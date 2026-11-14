@@ -9,30 +9,10 @@ import (
 	"github.com/safkhamezadeh/airhockey/entity"
 )
 
-type Game struct {
-	puck    entity.Puck
-	pMallet entity.Mallet
-}
-
-func (g *Game) Update() error {
-
-	return nil
-}
-
-func (g *Game) Draw(screen *ebiten.Image) {
-	g.puck.Draw(screen)
-	g.pMallet.Draw(screen)
-}
-
-func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return outsideWidth, outsideHeight
-}
-
 func main() {
 	puckSprite := assets.LoadAsset(assets.Puck)
 
 	malletSprite := assets.LoadAsset(assets.Mallet)
-	//malletBounds := malletSprite.Bounds()
 
 	g := &Game{
 		puck: entity.Puck{
@@ -43,6 +23,7 @@ func main() {
 			IsDragging: false,
 		},
 	}
+	g.puck.Velocity.X = 2
 	ebiten.SetWindowSize(int(config.Default().ScreenSize.Width), int(config.Default().ScreenSize.Height))
 	ebiten.SetWindowTitle("airhockey")
 	if err := ebiten.RunGame(g); err != nil {
