@@ -23,7 +23,6 @@ func main() {
 			IsDragging: false,
 		},
 	}
-	g.puck.Velocity.X = 2
 	ebiten.SetWindowSize(int(config.Default().ScreenSize.Width), int(config.Default().ScreenSize.Height))
 	ebiten.SetWindowTitle("airhockey")
 	if err := ebiten.RunGame(g); err != nil {

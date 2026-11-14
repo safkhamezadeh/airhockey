@@ -10,6 +10,9 @@ func (p *Puck) BounceOffWalls(bounds geometry.Size) {
 	r := p.Size.Width / 2
 	if p.Position.X-r <= 0 || p.Position.X+r >= bounds.Width {
 		p.Velocity.X *= -1
+	}
 
+	if p.Position.Y-r <= 0 || p.Position.Y+r >= bounds.Height {
+		p.Velocity.Y *= -1
 	}
 }

@@ -49,6 +49,9 @@ func (g *Game) updatePuck() {
 
 func (g *Game) collisions() {
 	g.puck.BounceOffWalls(config.Default().ScreenSize)
+	if g.puck.Collides(g.pMallet.GameObject) {
+		g.puck.BounceOff(g.pMallet.GameObject)
+	}
 	//border collisions
 	//if puck hits wall, velx * -1
 	//if mallet hits wall, velx = 0, xpos = wall
