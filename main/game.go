@@ -39,12 +39,7 @@ func (g *Game) updatePlayerMallet() {
 }
 
 func (g *Game) updatePuck() {
-	p := g.puck
-	vel := p.Velocity
-	newX := vel.X + p.Position.X
-	newY := vel.Y + p.Position.Y
-	g.puck.Position.X = newX
-	g.puck.Position.Y = newY
+	g.puck.Position = g.puck.Position.Add(g.puck.Velocity)
 }
 
 func (g *Game) collisions() {
@@ -52,9 +47,5 @@ func (g *Game) collisions() {
 	if g.puck.Collides(g.pMallet.GameObject) {
 		g.puck.BounceOff(g.pMallet.GameObject)
 	}
-	//border collisions
-	//if puck hits wall, velx * -1
-	//if mallet hits wall, velx = 0, xpos = wall
 
-	//entity collisions
 }

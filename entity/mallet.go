@@ -1,8 +1,6 @@
 package entity
 
 import (
-	"math"
-
 	"github.com/safkhamezadeh/airhockey/geometry"
 )
 
@@ -12,21 +10,10 @@ type Mallet struct {
 }
 
 func (m Mallet) InBounds(point geometry.Vector2) bool {
-	x := point.X
-	y := point.Y
-
 	r := m.Size.Width / 2
-	mMidX := m.Position.X
-	mMidY := m.Position.Y
-
-	ds := math.Pow((x-mMidX), 2) + math.Pow((y-mMidY), 2)
 
 	//inside or on boundary
-	if ds <= math.Pow(r, 2) {
-		return true
-	} else {
-		return false
-	}
+	return point.Sub(m.Position).Length() <= r
 }
 
 func (m *Mallet) UpdateDrag(cursor geometry.Vector2, pressed, released bool) {
