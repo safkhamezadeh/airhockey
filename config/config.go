@@ -19,6 +19,7 @@ type Config struct {
 	ScreenSize geometry.Size
 	Puck       PuckConfig
 	Mallet     MalletConfig
+	AiMallet   MalletConfig
 }
 
 var defaultConfig = Config{
@@ -32,6 +33,12 @@ var defaultConfig = Config{
 	Mallet: MalletConfig{
 		GameObjectConfig: GameObjectConfig{
 			SpawnPosition: geometry.Vector2{X: 320, Y: 700},
+			Scale:         1.0,
+		},
+	},
+	AiMallet: MalletConfig{
+		GameObjectConfig: GameObjectConfig{
+			SpawnPosition: geometry.Vector2{X: 320, Y: 150},
 			Scale:         1.0,
 		},
 	},

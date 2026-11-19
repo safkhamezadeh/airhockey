@@ -24,3 +24,8 @@ func (p *Puck) BounceOffWalls(bounds geometry.Size) {
 		p.Velocity.Y *= -1
 	}
 }
+
+func (p *Puck) Drag() {
+	const dragValue = 0.95
+	p.Velocity = p.Velocity.Scale(dragValue)
+}
